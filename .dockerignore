@@ -5,3 +5,6 @@ node_modules
 storage/logs/*.log
 database/*.sqlite
 tests
+subir-a-github.bat
+INSTALAR.txt
+_redireccion-github-pages
