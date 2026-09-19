@@ -30,12 +30,23 @@ php artisan migrate --seed
 php artisan serve
 ```
 
-El seeder crea el usuario inicial con `ADMIN_EMAIL` y `ADMIN_PASSWORD` del `.env`.
+El seeder crea el usuario inicial con `ADMIN_EMAIL` y `ADMIN_PASSWORD` del `.env`
+e importa el export incluido en el proyecto, así que al abrir ya hay datos.
 **Cambiá esa contraseña antes de publicar el sitio.**
 
-## Cargar datos
+## Datos
 
-Desde el navegador, en **Datos → Importar**, o desde la terminal:
+El proyecto incluye el export del periodo en `database/seeders/data/asistencia.csv`,
+y el seeder lo importa solo la primera vez que arranca: el tablero abre con los datos
+puestos, sin pasos manuales. Como el seeder solo importa **cuando no hay ninguna carga**,
+puede correr en cada arranque sin duplicar nada, y los datos vuelven solos aunque el
+disco del hosting se reinicie.
+
+> Ese CSV tiene nombre y CI de todo el personal. **El repositorio debe seguir siendo
+> privado.** Si alguna vez hay que hacerlo público, primero sacar el archivo del
+> historial de git, no solo del último commit.
+
+Para cargar otro periodo, desde el navegador en **Datos → Importar**, o desde la terminal:
 
 ```bash
 php artisan asistencia:importar ruta/al/asistencia.csv

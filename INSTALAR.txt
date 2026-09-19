@@ -5,6 +5,7 @@ Plasticos Carmen S.R.L.
 1. SUBIR A GITHUB
 ------------------------------------------------------------------
 Doble clic en   subir-a-github.bat
+(el .bat vuelve a hacer commit y push, tambien para actualizaciones)
 (El repositorio ya esta creado y vacio:
  https://github.com/alanbritoabmlabml-byte/tablero-asistencia-php)
 
@@ -24,9 +25,15 @@ Abrir http://localhost:8000
 Usuario:     sistemas@plasticoscarmen.com
 Contrasena:  cambiar-esta-clave   (cambiala en .env ANTES de publicar)
 
-Cargar los datos, de dos maneras:
+Los datos ya vienen adentro: database\seeders\data\asistencia.csv se importa
+solo la primera vez que arranca, asi que el tablero abre con los numeros puestos.
+
+Para cargar otro periodo:
   - En el navegador: Datos -> Importar -> elegir el CSV del export.
   - O por consola:   php artisan asistencia:importar ruta\al\asistencia.csv
+
+OJO: ese CSV tiene nombre y CI de todo el personal. El repositorio de GitHub
+debe seguir siendo PRIVADO.
 
 ------------------------------------------------------------------
 3. PONERLO EN LINEA

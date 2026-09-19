@@ -14,8 +14,13 @@ use Illuminate\Support\Facades\DB;
  */
 final class Importador
 {
-    /** Filas por INSERT. SQLite admite hasta 999 parametros por sentencia. */
-    public const LOTE = 800;
+    /**
+     * Filas por INSERT. Con 18 columnas, 50 filas son 900 parametros: por debajo del
+     * limite de 999 que traen las versiones viejas de SQLite, asi que la importacion
+     * funciona igual en SQLite, MySQL y PostgreSQL. Subirlo no acelera nada medible:
+     * las 111.000 filas de una carga entran en menos de un segundo de cualquier modo.
+     */
+    public const LOTE = 50;
 
     public function __construct(private CsvParser $parser) {}
 
