@@ -1,0 +1,88 @@
+/* ==========================================================================
+   Plasticos Carmen S.R.L. — kit de marca aplicado al tablero
+   Navy corporativo, rojo Carmen como acento, blanco predominante.
+   El semaforo (verde / ambar / rojo) solo comunica estado, nunca decora.
+   ========================================================================== */
+
+:root {
+  /* superficies */
+  --page: #EDF0F6;
+  --surface: #FFFFFF;
+  --surface-2: #F5F8FC;
+
+  /* tinta */
+  --ink: #0D1B2E;
+  --ink-2: #44546F;
+  --muted: #78879F;
+
+  /* marca */
+  --brand: #003080;
+  --brand-dark: #002048;
+  --carmen: #E00010;
+
+  /* estructura */
+  --grid: #E5EAF2;
+  --axis: #BFC9D9;
+  --ring: rgba(13, 27, 46, .13);
+
+  /* series categoricas: azul de datos, rojo de marca para lo que exige atencion,
+     azul claro para la tercera. Validadas para daltonismo y contraste. */
+  --s1: #2B5BB5;
+  --s2: #E00010;
+  --s3: #6E93D3;
+  --s4: #8C6BB1;
+
+  /* escala secuencial para mapas de calor */
+  --seq1: #E3EAF7; --seq2: #C6D5EF; --seq3: #9FB8E3; --seq4: #6E93D3;
+  --seq5: #3F6CC2; --seq6: #12479F; --seq7: #002048;
+
+  /* semaforo */
+  --good: #0F7A3D;
+  --warn: #B07C00;
+  --crit: #D0000F;
+  --good-bg: #E8F3EC;
+  --warn-bg: #FAF1DC;
+  --crit-bg: #FBE7E9;
+
+  --r: 14px;
+  --shadow: 0 1px 2px rgba(13, 27, 46, .05);
+}
+
+:root[data-theme="dark"] {
+  --page: #0C1016;
+  --surface: #151A22;
+  --surface-2: #1C222C;
+  --ink: #F1F5FA;
+  --ink-2: #B0BCCD;
+  --muted: #8494AC;
+  --brand: #12294F;
+  --brand-dark: #0B1B36;
+  --carmen: #EA4F5E;
+  --grid: #232B37;
+  --axis: #3B4553;
+  --ring: rgba(255, 255, 255, .13);
+  --s1: #5E90E6; --s2: #EA4F5E; --s3: #3A6FC0; --s4: #A98BD0;
+  --seq1: #16233A; --seq2: #1C3357; --seq3: #24467F; --seq4: #33609F;
+  --seq5: #4C82CC; --seq6: #7FA8E8; --seq7: #B9CFF4;
+  --good: #3FB871; --warn: #D9A43C; --crit: #FF6B76;
+  --good-bg: #11301F; --warn-bg: #2F2611; --crit-bg: #371519;
+  --shadow: none;
+}
+
+/* Calibri es la tipografia del kit; Carlito es su clon metrico para web.
+   Archivo aporta los titulares y las cifras. */
+body {
+  font-family: 'Carlito', 'Segoe UI', Calibri, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4,
+.tile .val, .score .v, .kpi-band .val {
+  font-family: 'Archivo', 'Segoe UI', system-ui, sans-serif;
+  letter-spacing: -.015em;
+}
+
+.num, .tile .val, td.n, th.n {
+  font-variant-numeric: tabular-nums;
+}

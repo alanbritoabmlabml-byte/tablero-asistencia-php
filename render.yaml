@@ -1,0 +1,43 @@
+# Despliegue en Render. El plan free reinicia el contenedor cada tanto y con el
+# se reinicia el disco: para conservar el historico de cargas hay que agregar un
+# disco persistente (o apuntar DB_CONNECTION a una base administrada).
+services:
+  - type: web
+    name: tablero-asistencia
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /up
+    envVars:
+      - key: APP_NAME
+        value: Control de Asistencia
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_TIMEZONE
+        value: America/La_Paz
+      - key: APP_LOCALE
+        value: es
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /app/database/database.sqlite
+      - key: SESSION_DRIVER
+        value: database
+      - key: CACHE_STORE
+        value: database
+      - key: QUEUE_CONNECTION
+        value: database
+      - key: ADMIN_NAME
+        value: Administrador del tablero
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false

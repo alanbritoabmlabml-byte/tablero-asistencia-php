@@ -1,0 +1,52 @@
+TABLERO DE CONTROL DE ASISTENCIA — version Laravel (PHP)
+Plasticos Carmen S.R.L.
+
+------------------------------------------------------------------
+1. SUBIR A GITHUB
+------------------------------------------------------------------
+Doble clic en   subir-a-github.bat
+(El repositorio ya esta creado y vacio:
+ https://github.com/alanbritoabmlabml-byte/tablero-asistencia-php)
+
+------------------------------------------------------------------
+2. PROBARLO EN TU PC
+------------------------------------------------------------------
+Hace falta PHP 8.2 o superior y Composer.
+
+    composer install
+    copy .env.example .env
+    php artisan key:generate
+    type nul > database\database.sqlite
+    php artisan migrate --seed
+    php artisan serve
+
+Abrir http://localhost:8000
+Usuario:     sistemas@plasticoscarmen.com
+Contrasena:  cambiar-esta-clave   (cambiala en .env ANTES de publicar)
+
+Cargar los datos, de dos maneras:
+  - En el navegador: Datos -> Importar -> elegir el CSV del export.
+  - O por consola:   php artisan asistencia:importar ruta\al\asistencia.csv
+
+------------------------------------------------------------------
+3. PONERLO EN LINEA
+------------------------------------------------------------------
+GitHub Pages NO puede ejecutar PHP: solo sirve archivos estaticos.
+Para que el tablero quede publico hace falta un hosting que corra PHP.
+
+El repo ya trae Dockerfile y render.yaml, asi que en Render:
+  New -> Blueprint -> elegir el repositorio -> completar
+  ADMIN_EMAIL y ADMIN_PASSWORD -> Apply.
+
+En cualquier servidor propio (IIS, Apache, Nginx):
+  composer install --no-dev --optimize-autoloader
+  php artisan migrate --force
+  php artisan config:cache
+  La raiz publica debe apuntar a la carpeta  public/  , nunca a la del proyecto.
+
+------------------------------------------------------------------
+4. QUE HAY ADENTRO
+------------------------------------------------------------------
+Ver README.md. El calculo vive completo en app/Services/Asistencia/
+y no depende de Laravel, asi que se puede reutilizar tal cual dentro
+del modulo de asistencia.
